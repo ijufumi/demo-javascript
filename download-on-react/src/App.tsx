@@ -23,7 +23,7 @@ class App extends React.Component {
 
     handleDownload = () =>  {
         const link = document.createElement('a');
-        const data = JSON.stringify(this.state.code, undefined, 2);
+        const data = JSON.stringify(JSON.parse(this.state.code), undefined, 2);
         const downloadUrl = window.URL.createObjectURL(new Blob([data], { "type": "application/json" }));
         link.download = "sample.json";
         link.href = downloadUrl;

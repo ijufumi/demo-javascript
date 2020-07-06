@@ -1,4 +1,4 @@
 [build]
   base    = "download-on-react"
-  publish = "download-on-react/dist"
+  publish = "dist"
   command = "yarn build"

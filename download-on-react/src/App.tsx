@@ -107,12 +107,7 @@ const Button = styled.div`
   color: #FFFFFF;
   margin: 10px;
   cursor: pointer;
-`;
-
-const DataArea = styled.textarea`
-  margin: 10px;
-  height: 500px;
-  padding: 10px;
+  border-radius: 10px;
 `;
 
 export default App;

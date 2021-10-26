@@ -7,7 +7,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core';
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
     root: () => ({
-      height: "var(--vh)"
+      height: "var(--vh, 100vh)"
     }),
   })
 );

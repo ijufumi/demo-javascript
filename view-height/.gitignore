@@ -1,2 +1,4 @@
 .cache/
-dist/
+dist/*.js
+dist/*.map
+dist/*.json

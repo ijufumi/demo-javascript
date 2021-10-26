@@ -30,7 +30,7 @@ task("dist", async ctx => {
   await fuse.runProd({ 
     uglify: false,
     bundles: {
-      app: { path: 'app.$hash.js', publicPath: 'dist' },
+      app: { path: 'app.$hash.js', publicPath: '/' },
     }
    });
 });

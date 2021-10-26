@@ -1,0 +1,22 @@
+{
+  "name": "view-height",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "fuse-box": "^4.0.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4",
+    "uglify-es": "^3.3.9",
+    "uglify-js": "^3.14.2"
+  },
+  "scripts": {
+    "start": "ts-node fuse",
+    "build": "ts-node fuse dist"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

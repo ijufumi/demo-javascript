@@ -23,6 +23,7 @@ jsonFiles=$(find . -name "package.json" -d 2)
 for jsonFile in ${jsonFiles[@]}; do
   targetDir=$(dirname $jsonFile)
   cd $targetDir
+  rm -f yarn.lock
   updateYarn
   cd - 
 done

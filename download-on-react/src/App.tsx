@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
@@ -7,23 +7,21 @@ import 'prismjs/components/prism-json';
 
 import './App.css';
 
-class App extends React.Component {
-    state = {
-        code: `{
-    "question": "How many parameters does BERT-large have?",
-    "answer_text": "BERT-large is really big... it has 24-layers and an embedding size of 1,024, for a total of 340M parameters! Altogether it is 1.34GB, so expect it to take a couple minutes to download to your Colab instance."
-}`,
+interface Props {}
+
+const App: FC<Props> = () => {
+    const [code, setCode] = useState<string>(`{
+        "question": "How many parameters does BERT-large have?",
+        "answer_text": "BERT-large is really big... it has 24-layers and an embedding size of 1,024, for a total of 340M parameters! Altogether it is 1.34GB, so expect it to take a couple minutes to download to your Colab instance."
+    }`)
+
+    const changeCode = (code: string) => {
+        setCode(code);
     }
 
-    changeCode = (code) => {
-        this.setState({
-            code: code
-        });
-    }
-
-    handleDownload = () =>  {
+    const handleDownload = () =>  {
         const link = document.createElement('a');
-        const data = JSON.stringify(JSON.parse(this.state.code), undefined, 2);
+        const data = JSON.stringify(JSON.parse(code), undefined, 2);
         const downloadUrl = window.URL.createObjectURL(new Blob([data]));
         link.download = "sample.json";
         link.href = downloadUrl;
@@ -32,35 +30,33 @@ class App extends React.Component {
         document.body.removeChild(link);
     }
 
-    render () {
-        return (
-            <Container>
-                <Title>
-                    Sample App
-                </Title>
-                <Contents>
-                    <ButtonContainer>
-                        <Button onClick={this.handleDownload}>
-                            Download
-                        </Button>
-                    </ButtonContainer>
-                    <Editor
-                        value={this.state.code}
-                        onValueChange={code => this.changeCode( code )}
-                        highlight={code => highlight(code, languages.json)}
-                        padding={10}
-                        style={{
-                            fontFamily: '"Fira code", "Fira Mono", monospace',
-                            fontSize: 20,
-                            height: '500px',
-                            margin: '10px',
-                            border: '1px solid #000000'
-                        }}
-                    />
-                </Contents>
-            </Container>
-        );
-    }
+    return (
+        <Container>
+            <Title>
+                Sample App
+            </Title>
+            <Contents>
+                <ButtonContainer>
+                    <Button onClick={handleDownload}>
+                        Download
+                    </Button>
+                </ButtonContainer>
+                <Editor
+                    value={code}
+                    onValueChange={code => changeCode( code )}
+                    highlight={code => highlight(code, languages.json)}
+                    padding={10}
+                    style={{
+                        fontFamily: '"Fira code", "Fira Mono", monospace',
+                        fontSize: 20,
+                        height: '500px',
+                        margin: '10px',
+                        border: '1px solid #000000'
+                    }}
+                />
+            </Contents>
+        </Container>
+    );
 }
 
 const Container = styled.div`

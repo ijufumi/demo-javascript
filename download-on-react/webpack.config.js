@@ -13,9 +13,6 @@ module.exports = {
                             '@babel/preset-env',
                             '@babel/preset-typescript',
                             '@babel/react'
-                        ],
-                        plugins: [
-                            '@babel/plugin-proposal-class-properties'
                         ]
                     }
                 },
